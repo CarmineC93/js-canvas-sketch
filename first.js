@@ -11,18 +11,21 @@ const sketch = () => {
     context.fillRect(0, 0, width, height);
     
     const w = 60;  //px
-    const h= 60;
+    const h = 60;
     const gap = 20;   //distanza tra i quadrati
-    let x = 100 + (w + gap)*i;
-    let y = 100 + (h + gap)*j; //aggiungiamo '+ (height + gap)*j' alla coordianata y perche le nuove righe si sviluppano appunto sull'asse y
-  
+    let x;
+    let y;
+
     for  (let i = 0; i < 5 ; i ++) {
-      //volendo aggiungere piu row di quadrati anche lungo l'asse y aggiungiamo un nuovo loop dentro il loop
-      for (let j=0; j<5; j++)  {
+      //volendo aggiungere piu row di quadrati anche lungo l'asse y aggiungiamo loop annidato
+      for (let j=0; j < 5; j++)  {
+        x = 100 + (w + gap)*i;
+        y = 100 + (h + gap)*j; //aggiungiamo '+ (height + gap)*j' alla coordianata y perche le nuove righe si sviluppano appunto sull'asse y
+     
         context.beginPath();
-        context.rect(x,y,width, height);
+        context.rect(x, y, w, h);
         context.stroke();
-    
+        
         //nello stesso ciclo posso creare una nuova figura per esempio un cerchio all'interno dei quadrati
         // qui mostrerò i nuovi cerchi solo il 50% delle volte. Math.random restituisce un numero tra 0 e 1
         if (Math.random () > 0.5) {
